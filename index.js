@@ -19,9 +19,11 @@ global.db.query = util.promisify(global.db.query);
 // Открыть с БД и вывести в консоль сузествующего пользователя с машинами
 let car = new Car();
 car.load(1);
+car.loadAll();
 
 let user = new User();
 user.load(1);
+user.loadAll();
 // Создать нового пользователя
 
 // Изменить имя пользователю
