@@ -1,6 +1,8 @@
 require('dotenv').config();
 const mysql = require('mysql');
 const util = require('util');
+const Car = require('./car');
+const User = require('./user');
 
 global.db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -13,8 +15,13 @@ global.db = mysql.createConnection({
 global.db.query = util.promisify(global.db.query);
 
 
-// Открыть с БД и вывести в консоль сузествующего пользователя с машинами
 
+// Открыть с БД и вывести в консоль сузествующего пользователя с машинами
+let car = new Car();
+car.load(1);
+
+let user = new User();
+user.load(1);
 // Создать нового пользователя
 
 // Изменить имя пользователю
