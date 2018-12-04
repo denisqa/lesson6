@@ -36,6 +36,10 @@ class Model {
       global.db.query(`INSERT INTO ${this.constructor.table()}(${fieldsKeys}) VALUES(${fieldsValues})`);
     }
   }
+
+  delete(id){
+    global.db.query(`DELETE FROM ${this.constructor.table()} WHERE ${this.pk}=${id}`);
+  }
 }
 
 module.exports = Model;

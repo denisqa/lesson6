@@ -34,5 +34,8 @@ userFields = {'id': 5, 'first_name': 'John787'};
 user.save(userFields);
 
 // Удалить пользователя
+user.delete(14);
 
 // Добавить пользователю новую машину
+carFields = {'user_id': 15, 'model': 'Tesla', 'year': 2018};
+car.save(carFields);
