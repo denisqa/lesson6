@@ -24,9 +24,14 @@ car.loadAll();
 let user = new User();
 user.load(1);
 user.loadAll();
+
 // Создать нового пользователя
+userFields = {'first_name': 'John797', 'last_name': 'John3', 'age': 25, 'gender': 'M'};
+user.save(userFields);
 
 // Изменить имя пользователю
+userFields = {'id': 5, 'first_name': 'John787'};
+user.save(userFields);
 
 // Удалить пользователя
 
