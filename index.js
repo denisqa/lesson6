@@ -26,16 +26,26 @@ user.load(1);
 user.loadAll();
 
 // Создать нового пользователя
-userFields = {'first_name': 'John797', 'last_name': 'John3', 'age': 25, 'gender': 'M'};
-user.save(userFields);
+let user1 = new User();
+user1.first_name='John7999';
+user1.last_name='John777';
+user1.age=25;
+user1.gender='M';
+user1.save();
 
 // Изменить имя пользователю
-userFields = {'id': 5, 'first_name': 'John787'};
-user.save(userFields);
+let user2 = new User();
+user2.id=5;
+user2.first_name='Andrew';
+user2.save();
 
 // Удалить пользователя
 user.delete(14);
 
 // Добавить пользователю новую машину
 carFields = {'user_id': 15, 'model': 'Tesla', 'year': 2018};
-car.save(carFields);
+let car1 = new Car();
+car1.user_id=15;
+car1.model='Tesla222';
+car1.year=2019;
+car1.save();

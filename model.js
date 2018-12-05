@@ -4,6 +4,12 @@ class Model {
       if(error){
         console.log(error);
       }
+
+      for(let value of result){
+        for(let key in value){
+          this[key] = value[key];
+        }
+      }
       console.log(result);
     });
   }
@@ -13,25 +19,31 @@ class Model {
       if(error){
         console.log(error);
       }
+      for(let value of result){
+        for(let key in value){
+          this[key] = value[key];
+        }
+      }
       console.log(result);
     });
   }
 
-  save(fields){
+  save(){
     let fieldsData = "";
     let fieldsKeys = "";
     let fieldsValues = "";
-    let iterator = Object.entries(fields);
-    for(let value of iterator){
-       fieldsData += `${value[0]}='${value[1]}',`;
-       fieldsKeys += `${value[0]},`;
-       fieldsValues += `'${value[1]}',`;
+    for(let key in this){
+      if(key != 'pk' && key != 'hasMany' && key != 'fields'){
+        fieldsData += `${key}='${this[key]}',`;
+        fieldsKeys += `${key},`;
+        fieldsValues += `'${this[key]}',`;
+      } 
     }
     fieldsData = fieldsData.substring(0, fieldsData.length - 1);
     fieldsKeys = fieldsKeys.substring(0, fieldsKeys.length - 1);
     fieldsValues = fieldsValues.substring(0, fieldsValues.length - 1);
-    if(fields[`${this.pk}`]){
-      global.db.query(`UPDATE ${this.constructor.table()} SET ${fieldsData} WHERE ${this.pk}=${fields[this.pk]}`);
+    if(this.id){
+      global.db.query(`UPDATE ${this.constructor.table()} SET ${fieldsData} WHERE ${this.pk}=${this.id}`);
     }else{
       global.db.query(`INSERT INTO ${this.constructor.table()}(${fieldsKeys}) VALUES(${fieldsValues})`);
     }
